@@ -1,0 +1,67 @@
+{
+  "employees": [
+    {
+      "name": "Max Mustermann",
+      "rarity": "gewöhnlich",
+      "speed": 1,
+      "efficiency": 1
+    },
+    {
+      "name": "Anna Schnell",
+      "rarity": "selten",
+      "speed": 1.5,
+      "efficiency": 1.2
+    },
+    {
+      "name": "Erik Episch",
+      "rarity": "episch",
+      "speed": 2,
+      "efficiency": 1.5
+    },
+    {
+      "name": "Mira Mythisch",
+      "rarity": "mythisch",
+      "speed": 2.5,
+      "efficiency": 1.8
+    },
+    {
+      "name": "Leo Legendär",
+      "rarity": "legendär",
+      "speed": 3,
+      "efficiency": 2
+    }
+  ],
+  "upgrades": {
+    "burgerSpeed": [
+      { "level": 1, "multiplier": 1 },
+      { "level": 2, "multiplier": 1.25 },
+      { "level": 3, "multiplier": 1.5 },
+      { "level": 4, "multiplier": 1.75 },
+      { "level": 5, "multiplier": 2 }
+    ],
+    "advertisement": [
+      { "level": 1, "bonus": 10 },
+      { "level": 2, "bonus": 25 },
+      { "level": 3, "bonus": 50 },
+      { "level": 4, "bonus": 75 },
+      { "level": 5, "bonus": 100 }
+    ]
+  },
+  "branches": [
+    {
+      "name": "Zentrale",
+      "baseIncome": 10,
+      "upgradeCost": 100
+    },
+    {
+      "name": "Filiale Nord",
+      "baseIncome": 15,
+      "upgradeCost": 150
+    },
+    {
+      "name": "Filiale Süd",
+      "baseIncome": 20,
+      "upgradeCost": 200
+    }
+  ]
+}
