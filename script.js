@@ -66,13 +66,13 @@ function increaseBurgerPrice() {
 function spawnCustomer() {
   const customersDiv = document.getElementById('customers');
   const customer = document.createElement('div');
+  customer.classList.add('customer'); // Füge die Klasse für die Animation hinzu
   customer.innerText = "🧍 Neuer Kunde!";
-  customer.style.marginTop = "10px";
   customersDiv.appendChild(customer);
 
   setTimeout(() => {
     customersDiv.removeChild(customer);
-  }, 3000 * speedMultiplier);
+  }, 3000 * speedMultiplier); // Entfernt den Kunden nach der Animation
 }
 
 function upgradeBranch() {
@@ -110,3 +110,4 @@ function updateUI() {
 }
 
 updateUI();
+
