@@ -1,0 +1,103 @@
+/* Animations.css: Zusätzliche Effekte für Seltenheiten, Crates & Events */
+
+/* Glitzer-Effekt für legendäre Crates */
+.legendary-glow {
+  position: relative;
+  animation: legendaryGlow 2s infinite;
+}
+
+@keyframes legendaryGlow {
+  0% {
+    box-shadow: 0 0 10px gold;
+  }
+  50% {
+    box-shadow: 0 0 20px orange, 0 0 30px gold;
+  }
+  100% {
+    box-shadow: 0 0 10px gold;
+  }
+}
+
+/* Feuer-Effekt für mythische Crates */
+@keyframes flame {
+  0%, 100% {
+    box-shadow: 0 0 15px orange;
+  }
+  50% {
+    box-shadow: 0 0 30px red, 0 0 20px orange;
+  }
+}
+
+.mythic-flame {
+  animation: flame 1.5s infinite;
+}
+
+/* Partikel-Effekt für epische Crates */
+.epic-particles {
+  background: radial-gradient(circle at center, purple 0%, transparent 70%);
+  animation: particles 2s infinite ease-in-out;
+}
+
+@keyframes particles {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Pop-In Effekt für gekaufte Werbung oder neue Filiale */
+.pop-in {
+  animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Schüttel-Effekt beim Crate öffnen */
+.shake {
+  animation: shakeCrate 0.6s;
+}
+
+@keyframes shakeCrate {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+/* Puls-Effekt für Buttons */
+.button-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+  }
+}
