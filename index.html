@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger Imperium</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burger Imperium</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="icon" href="assets/img/logo.png" type="image/png" />
 </head>
 <body>
-    <header>
-        <h1>🍔 Burger Imperium</h1>
-        <div id="money">💰 Geld: 0</div>
-        <div id="currentBranch">🏢 Filiale: Filiale 1 (Level: 1)</div>
-    </header>
+  <header>
+    <img src="assets/img/logo.png" alt="Burger Imperium Logo" class="logo" />
+    <h1>Burger Imperium</h1>
+  </header>
+  <main>
+    <section id="game">
+      <div id="burgerStation">
+        <img src="assets/img/burger.png" alt="Burger" id="burgerImage" />
+        <button id="makeBurger">Burger zubereiten</button>
+      </div>
+      <div id="infoPanel">
+        <p>Burger: <span id="burgerCount">0</span></p>
+        <p>Geld: <span id="money">$0</span></p>
+      </div>
+      <div id="actions">
+        <button id="buyCrate">Crate öffnen</button>
+        <button id="upgradeBranch">Neue Filiale</button>
+        <button id="advertise">Werbung kaufen</button>
+      </div>
+    </section>
+  </main>
 
-    <main>
-        <div id="gameArea">
-            <button onclick="makeBurger()" class="game-button">Zubereiten 🍔</button>
-            <button onclick="openCrate()" class="game-button">Crate Öffnen 📦</button>
-            <button onclick="runAd()" class="game-button">Werbung Schalten 📢</button>
-            <button onclick="upgradeBranch()" class="game-button">Filiale Upgraden 🏢</button>
-            <button onclick="openNewBranch()" class="game-button">Neue Filiale Eröffnen ➕</button>
-        </div>
-        
-        <div id="advertisement"></div>
-        <div id="progressContainer">
-            <div id="progressBar"></div>
-        </div>
-        
-        <div id="customers"></div>
-    </main>
-
-    <div id="crateEffect"></div>
-
-    <script src="script.js"></script>
+  <script src="config.js"></script>
+  <script src="data.json" type="application/json"></script>
+  <script src="saves.js"></script>
+  <script src="crate.js"></script>
+  <script src="branch.js"></script>
+  <script src="sound.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
- 
