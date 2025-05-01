@@ -1,51 +1,112 @@
 let money = 0;
-let orderReady = false;
+let burgerPrice = 10;
+let speedMultiplier = 1;
+let adBoost = false;
+let branches = [{ name: "Filiale 1", level: 1, multiplier: 1 }];
+let currentBranch = 0;
 
-// HTML-Elemente
-const moneyDisplay = document.getElementById('money');
-const orderDisplay = document.getElementById('order');
-const feedbackDisplay = document.getElementById('feedback');
-
-// Buttons
-const cookButton = document.getElementById('cookButton');
-const serveButton = document.getElementById('serveButton');
-
-// Funktionen
-function generateOrder() {
-  const orders = ['Burger', 'Cheeseburger', 'Veggie Burger'];
-  const randomOrder = orders[Math.floor(Math.random() * orders.length)];
-  orderDisplay.textContent = randomOrder;
-  orderReady = false;
-  feedbackDisplay.textContent = `Kunde bestellt einen ${randomOrder}.`;
+function updateMoney() {
+  document.getElementById('money').innerText = `💰 Geld: ${money}`;
 }
 
-function cookBurger() {
-  if (orderReady) {
-    feedbackDisplay.textContent = 'Burger ist bereits fertig! Klicke auf „Servieren“.';
+function updateBranch() {
+  document.getElementById('currentBranch').innerText = `🏢 Aktuelle Filiale: ${branches[currentBranch].name} (Level: ${branches[currentBranch].level})`;
+}
+
+function makeBurger() {
+  let income = burgerPrice * branches[currentBranch].multiplier;
+  if (adBoost) income *= 2; // Werbe-Effekt: doppelter Erlös
+  money += income;
+  updateMoney();
+  spawnCustomer();
+}
+
+function openCrate() {
+  const rand = Math.random();
+  if (rand < 0.4) {
+    burgerPrice += 3;
+    alert("💥 Neuer Grill! Burgerpreis +3!");
+  } else if (rand < 0.8) {
+    speedMultiplier *= 0.85;
+    alert("⚙️ Neue Maschine! Burger schneller zubereitet!");
   } else {
-    feedbackDisplay.textContent = 'Burger wird gekocht...';
-    setTimeout(() => {
-      orderReady = true;
-      feedbackDisplay.textContent = 'Burger ist fertig! Klicke auf „Servieren“.';
-    }, 2000); // Zeit für das Kochen
+    const rarities = ["selten", "episch", "legendär"];
+    const chosen = rarities[Math.floor(Math.random() * rarities.length)];
+    alert(`👩‍🍳 Du hast einen ${chosen} Mitarbeiter gewonnen!`);
+    if (chosen === "legendär") {
+      burgerPrice += 10;
+      speedMultiplier *= 0.7;
+    }
   }
 }
 
-function serveBurger() {
-  if (!orderReady) {
-    feedbackDisplay.textContent = 'Der Burger muss zuerst gekocht werden!';
+function runAd() {
+  adBoost = true;
+  alert("📢 Werbung aktiviert! Doppelte Einnahmen für 10 Sekunden!");
+  setTimeout(() => {
+    adBoost = false;
+    alert("📢 Werbeeffekt ist vorbei.");
+  }, 10000);
+}
+
+function enterLab() {
+  document.getElementById('lab').style.display = 'block';
+}
+
+function upgradeSpeed() {
+  speedMultiplier *= 0.8;
+  alert("🚀 Deine Zubereitungsgeschwindigkeit wurde verbessert!");
+}
+
+function increaseBurgerPrice() {
+  burgerPrice += 5;
+  alert("💸 Burgerpreis erhöht um 5!");
+}
+
+function spawnCustomer() {
+  const customersDiv = document.getElementById('customers');
+  const customer = document.createElement('div');
+  customer.innerText = "🧍 Neuer Kunde!";
+  customer.style.marginTop = "10px";
+  customersDiv.appendChild(customer);
+
+  setTimeout(() => {
+    customersDiv.removeChild(customer);
+  }, 3000 * speedMultiplier);
+}
+
+function upgradeBranch() {
+  const upgradeCost = branches[currentBranch].level * 100;
+  if (money >= upgradeCost) {
+    money -= upgradeCost;
+    branches[currentBranch].level++;
+    branches[currentBranch].multiplier += 0.5;
+    alert(`🏢 ${branches[currentBranch].name} wurde aufgewertet! (Level: ${branches[currentBranch].level})`);
+    updateMoney();
+    updateBranch();
   } else {
-    const earnings = Math.floor(Math.random() * 10) + 5; // Zufällige Einnahmen
-    money += earnings;
-    moneyDisplay.textContent = money;
-    feedbackDisplay.textContent = `Burger serviert! Du hast ${earnings}€ verdient.`;
-    generateOrder(); // Neue Bestellung generieren
+    alert("Nicht genug Geld für Upgrade!");
   }
 }
 
-// Event Listener
-cookButton.addEventListener('click', cookBurger);
-serveButton.addEventListener('click', serveBurger);
+function openNewBranch() {
+  const cost = 200 + branches.length * 100;
+  if (money >= cost) {
+    money -= cost;
+    const newName = prompt("Name der neuen Filiale?") || `Filiale ${branches.length + 1}`;
+    branches.push({ name: newName, level: 1, multiplier: 1 });
+    currentBranch = branches.length - 1;
+    alert(`➕ Neue Filiale '${newName}' eröffnet!`);
+    updateMoney();
+    updateBranch();
+  } else {
+    alert("Nicht genug Geld für eine neue Filiale!");
+  }
+}
 
-// Initiale Bestellung generieren
-generateOrder();
+function updateUI() {
+  updateMoney();
+  updateBranch();
+}
+
+updateUI();
