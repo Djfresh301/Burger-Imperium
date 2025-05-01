@@ -1,76 +1,103 @@
+/* Allgemeines Design */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  background: linear-gradient(to bottom, #ffcc00, #ff9900); /* Farbverlauf als Hintergrund */
-  margin: 0;
-  padding: 20px;
-  overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffbf2;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 30px;
 }
 
 h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #fff;
+    font-size: 2.5em;
+    color: #ff8c00;
 }
 
-button {
-  padding: 12px 24px;
-  margin: 10px;
-  font-size: 1.1em;
-  cursor: pointer;
-  border-radius: 12px;
-  border: none;
-  background-color: #ff9900;
-  color: white;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-button:hover {
-  background-color: #ffaa33;
-  transform: scale(1.1);
-}
-
-#customers {
-  margin-top: 20px;
-}
-
-#currentBranch {
-  margin-top: 20px;
-  font-size: 1.2em;
-  color: #fff;
-}
-
-#lab {
-  margin-top: 30px;
-  color: #fff;
-}
-
-/* Animation für die Kunden */
-@keyframes moveCustomer {
-  0% {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-}
-
-/* Kunden-Animation */
-.customer {
-  font-size: 1.5em;
-  color: #ff9900;
-  animation: moveCustomer 3s ease-in-out forwards;
-  margin-top: 20px;
+#money, #currentBranch {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: #333;
 }
 
 /* Buttons */
-button:active {
-  transform: scale(0.98);
+.game-button {
+    background-color: #ff9900;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-button:hover {
+    background-color: #ffaa33;
+}
+
+/* Anzeige des Werbeeffekts */
+#advertisement {
+    display: none;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Fortschrittsbalken für Burgerzubereitung */
+#progressContainer {
+    width: 100%;
+    background-color: #ddd;
+    margin-top: 30px;
+    border-radius: 10px;
+    height: 20px;
+    display: none;
+}
+
+#progressBar {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0;
+    border-radius: 10px;
+}
+
+/* Animationen für Crates */
+#crateEffect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.crate-visual {
+    animation: crateAnimation 1s forwards;
+}
+
+@keyframes crateAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Styling für Kunden */
+#customers {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
