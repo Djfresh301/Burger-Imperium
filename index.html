@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burger Imperium Deluxe</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Imperium</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>🍔 Burger Imperium</h1>
+        <div id="money">💰 Geld: 0</div>
+        <div id="currentBranch">🏢 Filiale: Filiale 1 (Level: 1)</div>
+    </header>
 
-  <h1>🍔 Burger Imperium Deluxe</h1>
-  
-  <div id="money">💰 Geld: 0</div>
-  <div id="currentBranch">🏢 Aktuelle Filiale: 1</div>
-  <div id="customers"></div>
+    <main>
+        <div id="gameArea">
+            <button onclick="makeBurger()" class="game-button">Zubereiten 🍔</button>
+            <button onclick="openCrate()" class="game-button">Crate Öffnen 📦</button>
+            <button onclick="runAd()" class="game-button">Werbung Schalten 📢</button>
+            <button onclick="upgradeBranch()" class="game-button">Filiale Upgraden 🏢</button>
+            <button onclick="openNewBranch()" class="game-button">Neue Filiale Eröffnen ➕</button>
+        </div>
+        
+        <div id="advertisement"></div>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+        
+        <div id="customers"></div>
+    </main>
 
-  <button onclick="makeBurger()">🍔 Burger verkaufen</button>
-  <button onclick="openCrate()">📦 Überraschung öffnen</button>
-  <button onclick="runAd()">📢 Werbung schalten</button>
-  <button onclick="enterLab()">🧪 Labor</button>
-  <button onclick="openNewBranch()">➕ Neue Filiale eröffnen</button>
-  <button onclick="upgradeBranch()">🔧 Filiale upgraden</button>
+    <div id="crateEffect"></div>
 
-  <div id="lab" style="display:none;">
-    <h2>🔬 Labor-Verbesserungen</h2>
-    <button onclick="upgradeSpeed()">⚡ Schnellere Zubereitung</button>
-    <button onclick="increaseBurgerPrice()">💸 Preis erhöhen</button>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 
+ 
